@@ -1,0 +1,6 @@
+17     -     31 
+35     -     Bad 
+12     -     Good 
+10     -     Dog 
+22     -     Mike 
+17     -     Haha 
