@@ -1,18 +1,8 @@
-import java.io.BufferedWriter;
-	import java.io.File;
-	import java.io.FileWriter;
-	import java.io.IOException;
-	import java.util.ArrayList;
-	import java.util.Collections;
-	import java.util.HashMap;
-	import java.util.Iterator;
-	import java.util.Scanner;
+	import java.io.*;
+	import java.util.*;
 
 public class game {
 	static ArrayList<String> products = new ArrayList();
-	static final int EMPTY_HIT = 2;
-	static final int OCCUPIED = 3;
-	static final int OCCUPIED_HIT = 4;
 	static int guesses = 0;
 	static String player = "";
 	static HashMap<String, String> list = new HashMap();
@@ -56,13 +46,13 @@ public class game {
 		String item;
 		if(userInput.length() > 3 && userInput.charAt(3) != 32) {
 			item = userInput.substring(3);
-			System.out.println(item + " is added to the inventory");
+			System.out.println(capitalization(item) + "is added to the inventory");
 			item = capitalization(item);
 			products.add(item);
 			Collections.sort(products);
 		} else if(userInput.length() > 4) {
 			item = userInput.substring(4);
-			System.out.println(item + " is added to the inventory");
+			System.out.println(capitalization(item) + "is added to the inventory");
 			item = capitalization(item);
 			products.add(item);
 			Collections.sort(products);
@@ -87,7 +77,6 @@ public class game {
 
 	public static void removeProduct(String userInput) {
 		String item = "";
-		boolean x = false;
 
 		try {
 			int x1;
@@ -95,18 +84,18 @@ public class game {
 				item = userInput.substring(7);
 				x1 = Integer.parseInt(item);
 				if(x1 >= 0 && x1 <= products.size()) {
-					System.out.println((String)products.get(x1 - 1) + " is removed from the inventory");
+					System.out.println((String)products.get(x1 - 1) + "is removed from the inventory");
 					products.remove(x1 - 1);
 				}
 			} else if(userInput.startsWith("delete")) {
 				item = userInput.substring(6);
 				x1 = Integer.parseInt(item);
 				if(x1 >= 0 && x1 <= products.size()) {
-					System.out.println((String)products.get(x1 - 1) + " is removed from the inventory");
+					System.out.println((String)products.get(x1 - 1) + "is removed from the inventory");
 					products.remove(x1 - 1);
 				}
 			}
-		} catch (NumberFormatException var4) {
+		} catch (NumberFormatException e) {
 			System.out.println("This is not a number");
 		}
 
